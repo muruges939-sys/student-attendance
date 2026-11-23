@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Staff Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body class="dash">
+  <header>
+    <div>
+      <strong id="welcome">Welcome</strong>
+      <span id="who" class="sub"></span>
+    </div>
+    <button id="logout" type="button">Logout</button>
+  </header>
+
+  <main>
+    <section class="panel wide">
+      <h2>Today's Overview</h2>
+      <div id="dash-stats" class="stats"></div>
+    </section>
+
+    <section class="panel wide">
+      <h2>Class Attendance</h2>
+      <div class="row-inline">
+        <label for="att-date">Date</label>
+        <input id="att-date" type="date">
+        <button id="att-load" type="button" class="small">Load</button>
+      </div>
+      <p id="att-msg" class="message"></p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>ID</th><th>Name</th><th>Check In</th><th>Check Out</th><th>Status</th><th>Set status</th></tr>
+          </thead>
+          <tbody id="att-list"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel wide">
+      <h2>Pending Leave Requests</h2>
+      <p id="leave-msg" class="message"></p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Student</th><th>Type</th><th>From</th><th>To</th><th>Reason</th><th>Remarks</th><th></th></tr>
+          </thead>
+          <tbody id="leave-pending"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel wide">
+      <h2>Reports (CSV)</h2>
+      <div class="row-inline">
+        <label for="rep-from">From</label>
+        <input id="rep-from" type="date">
+        <label for="rep-to">To</label>
+        <input id="rep-to" type="date">
+      </div>
+      <div class="row-inline">
+        <button id="rep-att" type="button" class="small">Attendance report</button>
+        <button id="rep-sum" type="button" class="small">Summary report</button>
+        <button id="rep-leave" type="button" class="small">Leave report</button>
+      </div>
+      <p id="report-msg" class="message"></p>
+    </section>
+
+    <section class="panel wide">
+      <h2>Holidays</h2>
+      <div id="holiday-form" class="row-inline hidden">
+        <input id="hol-date" type="date">
+        <input id="hol-desc" type="text" placeholder="Description (e.g. Pongal)" maxlength="100">
+        <button id="hol-add" type="button" class="small">Add</button>
+      </div>
+      <p id="holiday-msg" class="message"></p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Date</th><th>Description</th><th></th></tr></thead>
+          <tbody id="holiday-list"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel wide">
+      <h2>Students</h2>
+
+      <div id="student-form" class="hidden">
+        <div class="form-grid">
+          <div>
+            <label for="st-id">Student ID</label>
+            <input id="st-id" type="text" maxlength="20">
+          </div>
+          <div>
+            <label for="st-name">Name</label>
+            <input id="st-name" type="text" maxlength="100">
+          </div>
+          <div>
+            <label for="st-email">Email</label>
+            <input id="st-email" type="email" maxlength="100">
+          </div>
+          <div>
+            <label for="st-dept">Department</label>
+            <input id="st-dept" type="text" maxlength="50">
+          </div>
+          <div>
+            <label for="st-year">Year (1-6)</label>
+            <input id="st-year" type="number" min="1" max="6">
+          </div>
+          <div>
+            <label for="st-section">Section</label>
+            <input id="st-section" type="text" maxlength="10">
+          </div>
+        </div>
+        <button id="st-save" type="button" class="primary">Add student</button>
+        <button id="st-cancel" type="button" class="small hidden">Cancel edit</button>
+      </div>
+      <p id="st-msg" class="message"></p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>ID</th><th>Name</th><th>Email</th><th>Dept</th><th>Year</th><th>Section</th><th></th></tr>
+          </thead>
+          <tbody id="student-list"></tbody>
+        </table>
+      </div>
+    </section>
+        <section id="faculty-panel" class="panel wide hidden">
+      <h2>Faculty</h2>
+
+      <div class="form-grid">
+        <div>
+          <label for="fc-name">Name</label>
+          <input id="fc-name" type="text" maxlength="100">
+        </div>
+        <div>
+          <label for="fc-username">Username</label>
+          <input id="fc-username" type="text" maxlength="50">
+        </div>
+        <div>
+          <label for="fc-password">Password (min 8)</label>
+          <input id="fc-password" type="password" autocomplete="new-password">
+        </div>
+        <div>
+          <label for="fc-dept">Department</label>
+          <input id="fc-dept" type="text" maxlength="50">
+        </div>
+        <div>
+          <label for="fc-year">Year (1-6)</label>
+          <input id="fc-year" type="number" min="1" max="6">
+        </div>
+        <div>
+          <label for="fc-section">Section</label>
+          <input id="fc-section" type="text" maxlength="10">
+        </div>
+      </div>
+      <button id="fc-save" type="button" class="primary">Add faculty</button>
+      <button id="fc-cancel" type="button" class="small hidden">Cancel edit</button>
+      <p id="fc-msg" class="message"></p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Name</th><th>Username</th><th>Dept</th><th>Year</th><th>Section</th><th></th></tr>
+          </thead>
+          <tbody id="faculty-list"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/staff.js"></script>
+</body>
+</html>

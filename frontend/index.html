@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Attendance System - Login</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="card">
+    <h1>Student Attendance System</h1>
+
+    <div class="tabs">
+      <button id="tab-student" class="tab active" type="button">Student</button>
+      <button id="tab-staff" class="tab" type="button">Admin / Faculty</button>
+    </div>
+
+    <div id="student-box">
+      <label for="email">College email</label>
+      <input id="email" type="email" placeholder="student1@test.com">
+      <button id="student-login" type="button">Login</button>
+      <p class="hint">Testing mode login. Google Sign-In will replace this.</p>
+    </div>
+
+    <div id="staff-box" class="hidden">
+      <label for="username">Username</label>
+      <input id="username" type="text">
+      <label for="password">Password</label>
+      <input id="password" type="password">
+      <button id="staff-login" type="button">Login</button>
+    </div>
+
+    <p id="message" class="message"></p>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>

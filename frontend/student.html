@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body class="dash">
+  <header>
+    <div>
+      <strong id="welcome">Welcome</strong>
+      <span id="who" class="sub"></span>
+    </div>
+    <button id="logout" type="button">Logout</button>
+  </header>
+
+  <main>
+    <section class="panel">
+      <h2>Today</h2>
+      <p id="today-status">Loading...</p>
+      <div class="row">
+        <button id="btn-in" type="button" disabled>Check In</button>
+        <button id="btn-out" type="button" disabled>Check Out</button>
+      </div>
+      <p id="action-msg" class="message"></p>
+    </section>
+
+    <section class="panel">
+      <h2>My Attendance</h2>
+      <div id="stats" class="stats"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Notifications <span id="unread" class="badge hidden">0</span></h2>
+      <button id="mark-all" type="button" class="small">Mark all as read</button>
+      <ul id="notif-list" class="list"></ul>
+    </section>
+        <section class="panel wide">
+      <h2>Apply for Leave</h2>
+      <div class="form-grid">
+        <div>
+          <label for="leave-type">Type</label>
+          <select id="leave-type">
+            <option value="SL">Sick Leave (SL)</option>
+            <option value="CL">Casual Leave (CL)</option>
+          </select>
+        </div>
+        <div>
+          <label for="leave-start">Start date</label>
+          <input id="leave-start" type="date">
+        </div>
+        <div>
+          <label for="leave-end">End date</label>
+          <input id="leave-end" type="date">
+        </div>
+        <div class="full">
+          <label for="leave-reason">Reason</label>
+          <input id="leave-reason" type="text" maxlength="500">
+        </div>
+      </div>
+      <button id="leave-submit" type="button" class="primary">Submit request</button>
+      <p id="leave-msg" class="message"></p>
+
+      <h3>My Leave Requests</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Type</th><th>From</th><th>To</th><th>Status</th><th>Remarks</th><th></th></tr>
+          </thead>
+          <tbody id="leave-list"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel wide">
+      <h2>Attendance History</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Date</th><th>Check In</th><th>Check Out</th><th>Status</th></tr>
+          </thead>
+          <tbody id="history"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/student.js"></script>
+</body>
+</html>
